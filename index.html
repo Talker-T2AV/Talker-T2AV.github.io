@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talker-T2AV | Text-to-Audio-Visual Generation</title>
+    <title>Talker-T2AV | Joint Talking Audio-Video Generation</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!-- Navigation -->
 <nav class="navbar">
     <div class="container">
-        <a href="#" class="logo">🎬 Talker-T2AV</a>
+        <a href="#" class="logo">Talker-T2AV</a>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#features">Features</a></li>
+            <li><a href="#abstract">Abstract</a></li>
+            <li><a href="#method">Method</a></li>
             <li><a href="#demo">Demo</a></li>
-            <li><a href="#architecture">Architecture</a></li>
-            <li><a href="https://github.com/Talker-T2AV" class="btn-nav" target="_blank">GitHub ↗</a></li>
         </ul>
     </div>
 </nav>
@@ -28,92 +26,55 @@
 <header class="hero">
     <div class="hero-bg"></div>
     <div class="container hero-content">
-        <div class="hero-badge">🚀 Open Source AI Project</div>
+        <div class="hero-badge">Anonymous Submission</div>
         <h1>Talker-T2AV</h1>
-        <p class="hero-subtitle">Text-to-Audio-Visual Generation</p>
-        <p class="hero-desc">
-            Transform text into synchronized audio-visual content using state-of-the-art
-            generative AI. From scripts to stunning videos with natural speech — all in one pipeline.
-        </p>
-        <div class="hero-buttons">
-            <a href="https://github.com/Talker-T2AV" class="btn btn-primary" target="_blank">View on GitHub</a>
-            <a href="#demo" class="btn btn-secondary">See Demo ▶</a>
-        </div>
+        <p class="hero-subtitle">Joint Talking Audio-Video Generation with<br>Autoregressive Diffusion Modeling</p>
+        <p class="hero-authors">Anonymous Authors</p>
     </div>
 </header>
 
-<!-- About Section -->
-<section id="about" class="section">
-    <div class="container">
-        <h2 class="section-title">What is Talker-T2AV?</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <p>
-                    <strong>Talker-T2AV</strong> is an AI-powered framework that generates
-                    synchronized audio-visual content directly from text descriptions.
-                    It bridges the gap between text-to-speech and text-to-video by producing
-                    coherent, aligned audio and visual outputs in a unified pipeline.
-                </p>
-                <p>
-                    Whether you're creating talking-head videos, narrated animations, or
-                    multimedia presentations, Talker-T2AV provides an end-to-end solution
-                    that ensures temporal alignment between audio and visual modalities.
-                </p>
-            </div>
-            <div class="about-stats">
-                <div class="stat-card">
-                    <span class="stat-icon">📝</span>
-                    <span class="stat-label">Text Input</span>
-                </div>
-                <div class="stat-arrow">→</div>
-                <div class="stat-card">
-                    <span class="stat-icon">🧠</span>
-                    <span class="stat-label">AI Pipeline</span>
-                </div>
-                <div class="stat-arrow">→</div>
-                <div class="stat-card">
-                    <span class="stat-icon">🎬</span>
-                    <span class="stat-label">Audio + Video</span>
-                </div>
-            </div>
+<!-- Abstract Section -->
+<section id="abstract" class="section">
+    <div class="container container-narrow">
+        <h2 class="section-title">Abstract</h2>
+        <div class="abstract-text">
+            <p>
+                Joint audio-video generation models, such as dual-branch diffusion transformers, have demonstrated that generating audio and video within a unified model yields stronger cross-modal coherence than cascaded pipelines. However, existing joint audio-video diffusion models typically couple the two modalities throughout the entire denoising process via pervasive attention mechanisms, treating both high-level semantics and low-level signal details in a fully entangled manner. We argue that such uniform coupling is suboptimal for talking head synthesis. While audio and facial motion are strongly correlated at the semantic and temporal levels, their low-level realizations&mdash;acoustic signals and visual textures&mdash;follow distinct rendering processes. Enforcing joint modeling across all levels can therefore lead to unnecessary entanglement and reduced modeling efficiency. Instead, we posit that joint modeling should primarily occur at high-level semantic and temporal information, where cross-modal alignment is essential, while low-level refinement should be handled by modality-specific decoders.
+            </p>
+            <p>
+                Building on this observation, we propose <strong>Talker-T2AV</strong>, an autoregressive diffusion framework that realizes this principle: high-level cross-modal modeling in a shared autoregressive backbone, with low-level refinement delegated to modality-specific decoding. A shared autoregressive language model serves as a high-level temporal planner, jointly reasoning over audio and video in a unified patch-level token space with autoregressive left-to-right generation. Two lightweight diffusion transformer heads then decode the language model's hidden states into frame-level audio and video latents. Experiments on talking portrait benchmarks show that Talker-T2AV outperforms dual-branch diffusion transformer baselines in lip-sync accuracy, video quality, and audio quality, and further achieves stronger cross-modal consistency than cascaded pipelines, highlighting the complementary benefits of joint modeling.
+            </p>
         </div>
     </div>
 </section>
 
-<!-- Features Section -->
-<section id="features" class="section section-alt">
+<!-- Method Overview Section -->
+<section id="method" class="section section-alt">
     <div class="container">
-        <h2 class="section-title">Key Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🔗</div>
-                <h3>Audio-Visual Alignment</h3>
-                <p>Precise synchronization between generated speech and visual content for natural, coherent output.</p>
+        <h2 class="section-title">Method Overview</h2>
+        <p class="section-desc">
+            Talker-T2AV decouples joint audio-video generation into high-level cross-modal planning and low-level modality-specific refinement.
+        </p>
+        <div class="arch-diagram">
+            <div class="arch-step">
+                <div class="arch-box">Shared Autoregressive LM</div>
+                <p>High-level temporal planner: jointly reasons over audio &amp; video in a unified patch-level token space</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>End-to-End Pipeline</h3>
-                <p>Single unified framework from text input to final audio-visual output — no fragmented tools needed.</p>
+            <div class="arch-arrow">&#8595;</div>
+            <div class="arch-split">
+                <div class="arch-step">
+                    <div class="arch-box arch-audio">Audio DiT Head</div>
+                    <p>Lightweight diffusion transformer<br>decodes audio latents</p>
+                </div>
+                <div class="arch-step">
+                    <div class="arch-box arch-visual">Video DiT Head</div>
+                    <p>Lightweight diffusion transformer<br>decodes video latents</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3>High-Quality Generation</h3>
-                <p>State-of-the-art generative models produce natural speech and visually compelling video content.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔧</div>
-                <h3>Modular Design</h3>
-                <p>Flexible architecture allows easy customization and integration of different model components.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📦</div>
-                <h3>Open Source</h3>
-                <p>Fully open-source codebase with comprehensive documentation and pre-trained model weights.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3>Easy Deployment</h3>
-                <p>Simple setup with Docker support and clear instructions to get started quickly.</p>
+            <div class="arch-arrow">&#8595;</div>
+            <div class="arch-step">
+                <div class="arch-box arch-output">Synchronized Talking Portrait</div>
+                <p>Lip-sync accurate audio-video output</p>
             </div>
         </div>
     </div>
@@ -122,96 +83,27 @@
 <!-- Demo Section -->
 <section id="demo" class="section">
     <div class="container">
-        <h2 class="section-title">Demo</h2>
-        <p class="section-desc">See Talker-T2AV in action — from text prompts to audio-visual results.</p>
+        <h2 class="section-title">Demo Results</h2>
+        <p class="section-desc">Generated talking portrait samples. Videos with synchronized audio coming soon.</p>
         <div class="demo-grid">
             <div class="demo-card">
                 <div class="demo-placeholder">
-                    <span>🎥</span>
-                    <p>Demo Video 1</p>
-                </div>
-                <div class="demo-info">
-                    <p class="demo-prompt">"A woman explains quantum computing in a calm, professional tone."</p>
+                    <span>&#127916;</span>
+                    <p>Sample 1</p>
                 </div>
             </div>
             <div class="demo-card">
                 <div class="demo-placeholder">
-                    <span>🎥</span>
-                    <p>Demo Video 2</p>
-                </div>
-                <div class="demo-info">
-                    <p class="demo-prompt">"A narrator describes a sunset over the ocean with ambient sounds."</p>
+                    <span>&#127916;</span>
+                    <p>Sample 2</p>
                 </div>
             </div>
             <div class="demo-card">
                 <div class="demo-placeholder">
-                    <span>🎥</span>
-                    <p>Demo Video 3</p>
-                </div>
-                <div class="demo-info">
-                    <p class="demo-prompt">"An animated character tells a bedtime story for children."</p>
+                    <span>&#127916;</span>
+                    <p>Sample 3</p>
                 </div>
             </div>
-        </div>
-        <p class="demo-note">💡 Replace the placeholders above with your actual demo videos or GIFs.</p>
-    </div>
-</section>
-
-<!-- Architecture Section -->
-<section id="architecture" class="section section-alt">
-    <div class="container">
-        <h2 class="section-title">Architecture</h2>
-        <p class="section-desc">The Talker-T2AV pipeline consists of several key components working together.</p>
-        <div class="arch-diagram">
-            <div class="arch-step">
-                <div class="arch-box">Text Encoder</div>
-                <p>Encodes input text into semantic representations</p>
-            </div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-step">
-                <div class="arch-box">Cross-Modal Planner</div>
-                <p>Plans temporal alignment between audio and visual streams</p>
-            </div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-split">
-                <div class="arch-step">
-                    <div class="arch-box arch-audio">Audio Generator</div>
-                    <p>Produces natural speech & sound</p>
-                </div>
-                <div class="arch-step">
-                    <div class="arch-box arch-visual">Visual Generator</div>
-                    <p>Generates synchronized video frames</p>
-                </div>
-            </div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-step">
-                <div class="arch-box arch-output">AV Synchronizer & Output</div>
-                <p>Final aligned audio-visual output</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Getting Started Section -->
-<section id="start" class="section">
-    <div class="container">
-        <h2 class="section-title">Getting Started</h2>
-        <div class="code-block">
-            <div class="code-header">
-                <span class="code-dot red"></span>
-                <span class="code-dot yellow"></span>
-                <span class="code-dot green"></span>
-                <span class="code-title">Terminal</span>
-            </div>
-            <pre><code><span class="comment"># Clone the repository</span>
-git clone https://github.com/Talker-T2AV/Talker-T2AV.git
-cd Talker-T2AV
-
-<span class="comment"># Install dependencies</span>
-pip install -r requirements.txt
-
-<span class="comment"># Run inference</span>
-python inference.py --text "Your text prompt here"</code></pre>
         </div>
     </div>
 </section>
@@ -219,19 +111,8 @@ python inference.py --text "Your text prompt here"</code></pre>
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>🎬 Talker-T2AV</h3>
-                <p>Text-to-Audio-Visual Generation</p>
-            </div>
-            <div class="footer-links">
-                <a href="https://github.com/Talker-T2AV" target="_blank">GitHub</a>
-                <!-- <a href="#">Paper</a> -->
-                <!-- <a href="#">Contact</a> -->
-            </div>
-        </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Talker-T2AV. Open source under MIT License.</p>
+            <p>Anonymous Submission &mdash; This page is for review purposes only.</p>
         </div>
     </div>
 </footer>
