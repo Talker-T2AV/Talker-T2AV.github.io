@@ -18,7 +18,7 @@
             <li><a href="#abstract">Abstract</a></li>
             <li><a href="#method">Method</a></li>
             <li><a href="#demo">T2AV</a></li>
-            <li><a href="#demo-zeroshot">Zero-Shot</a></li>
+            <li><a href="#demo-zeroshot">Cloning</a></li>
         </ul>
     </div>
 </nav>
@@ -136,43 +136,91 @@
     </div>
 </section>
 
-<!-- Demo Section: Zero-Shot / Cross-Identity Generation -->
+<!-- Demo Section: Zero-Shot Audio-Video Cloning -->
 <section id="demo-zeroshot" class="section section-alt">
     <div class="container">
-        <h2 class="section-title">Zero-Shot Cross-Identity Generation</h2>
+        <h2 class="section-title">Zero-Shot Audio-Video Cloning</h2>
         <p class="section-desc">
-            Given a text transcript, a speaker embedding extracted from an unseen reference speech,
-            and an identity image of an arbitrary subject, our model synthesizes speech in the target
-            speaker's voice together with a temporally synchronized talking-head video,
-            without any speaker- or identity-specific fine-tuning.
+            Given a short reference audio-video clip of an unseen speaker,
+            our model clones both the speaker's voice and visual identity, synthesizing
+            new talking-head clips that speak arbitrary text content&mdash;without any
+            speaker- or identity-specific fine-tuning.
         </p>
 
-        <div class="demo-grid">
-            <!-- Placeholder videos  ·  replace src with the new demo files when ready -->
-            <figure class="demo-card demo-card-empty">
-                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
-            </figure>
-            <figure class="demo-card demo-card-empty">
-                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
-            </figure>
-            <figure class="demo-card demo-card-empty">
-                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
-            </figure>
-            <figure class="demo-card demo-card-empty">
-                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
-            </figure>
-            <figure class="demo-card demo-card-empty">
-                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
-            </figure>
-            <figure class="demo-card demo-card-empty">
-                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
-            </figure>
-            <figure class="demo-card demo-card-empty">
-                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
-            </figure>
-            <figure class="demo-card demo-card-empty">
-                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
-            </figure>
+        <div class="clone-table">
+            <!-- Column header row -->
+            <div class="clone-head">
+                <div class="clone-head-cell">Reference</div>
+                <div class="clone-head-cell">Generated&nbsp;#1</div>
+                <div class="clone-head-cell">Generated&nbsp;#2</div>
+                <div class="clone-head-cell">Generated&nbsp;#3</div>
+            </div>
+
+            <!-- Row 1: LeCun -->
+            <div class="clone-row">
+                <figure class="demo-card">
+                    <span class="clone-tag">Ref</span>
+                    <video class="demo-video" controls preload="metadata" playsinline>
+                        <source src="av/LeCun_ref.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="demo-card">
+                    <span class="clone-tag clone-tag-gen">Gen&nbsp;1</span>
+                    <video class="demo-video" controls preload="metadata" playsinline>
+                        <source src="av/LeCun_gen1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="demo-card demo-card-empty">
+                    <div class="demo-placeholder-square"><span>Gen&nbsp;2</span></div>
+                </figure>
+                <figure class="demo-card demo-card-empty">
+                    <div class="demo-placeholder-square"><span>Gen&nbsp;3</span></div>
+                </figure>
+            </div>
+
+            <!-- Row 2: LeiJun -->
+            <div class="clone-row">
+                <figure class="demo-card">
+                    <span class="clone-tag">Ref</span>
+                    <video class="demo-video" controls preload="metadata" playsinline>
+                        <source src="av/LeiJun_ref.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="demo-card">
+                    <span class="clone-tag clone-tag-gen">Gen&nbsp;1</span>
+                    <video class="demo-video" controls preload="metadata" playsinline>
+                        <source src="av/LeiJun_gen1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="demo-card demo-card-empty">
+                    <div class="demo-placeholder-square"><span>Gen&nbsp;2</span></div>
+                </figure>
+                <figure class="demo-card demo-card-empty">
+                    <div class="demo-placeholder-square"><span>Gen&nbsp;3</span></div>
+                </figure>
+            </div>
+
+            <!-- Row 3: Trump -->
+            <div class="clone-row">
+                <figure class="demo-card">
+                    <span class="clone-tag">Ref</span>
+                    <video class="demo-video" controls preload="metadata" playsinline>
+                        <source src="av/Trump_ref.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="demo-card">
+                    <span class="clone-tag clone-tag-gen">Gen&nbsp;1</span>
+                    <video class="demo-video" controls preload="metadata" playsinline>
+                        <source src="av/Trump_gen1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="demo-card demo-card-empty">
+                    <div class="demo-placeholder-square"><span>Gen&nbsp;2</span></div>
+                </figure>
+                <figure class="demo-card demo-card-empty">
+                    <div class="demo-placeholder-square"><span>Gen&nbsp;3</span></div>
+                </figure>
+            </div>
         </div>
     </div>
 </section>

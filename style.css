@@ -334,6 +334,66 @@ a:hover {
 }
 
 /* ==================== */
+/*  Clone Table         */
+/* ==================== */
+.clone-table {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.clone-head,
+.clone-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.clone-head {
+    gap: 16px;
+}
+
+.clone-head-cell {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+}
+
+.clone-head-cell:first-child {
+    color: var(--accent);
+}
+
+.clone-tag {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    background: rgba(15, 15, 26, 0.78);
+    backdrop-filter: blur(8px);
+    color: var(--accent);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 206, 201, 0.35);
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.clone-tag-gen {
+    color: #FD79A8;
+    border-color: rgba(253, 121, 168, 0.35);
+}
+
+/* ==================== */
 /*  Footer               */
 /* ==================== */
 .footer {
@@ -371,6 +431,17 @@ a:hover {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
         max-width: 520px;
+    }
+
+    .clone-head,
+    .clone-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .clone-table {
+        max-width: 520px;
+        gap: 12px;
     }
 
     .arch-split {
