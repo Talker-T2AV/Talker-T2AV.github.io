@@ -17,7 +17,8 @@
         <ul class="nav-links">
             <li><a href="#abstract">Abstract</a></li>
             <li><a href="#method">Method</a></li>
-            <li><a href="#demo">Demo</a></li>
+            <li><a href="#demo">T2AV</a></li>
+            <li><a href="#demo-zeroshot">Zero-Shot</a></li>
         </ul>
     </div>
 </nav>
@@ -80,11 +81,15 @@
     </div>
 </section>
 
-<!-- Demo Section -->
+<!-- Demo Section: Joint Text-to-Audio-Video Generation -->
 <section id="demo" class="section">
     <div class="container">
-        <h2 class="section-title">Demo Results</h2>
-        <p class="section-desc">Generated talking portraits with synchronized audio &amp; lip motion. Click any sample to play with sound.</p>
+        <h2 class="section-title">Joint Text-to-Audio-Video Generation</h2>
+        <p class="section-desc">
+            Given a text transcript, a reference speech and an identity image as input,
+            our model jointly generates temporally aligned speech and talking-head video
+            in a single unified autoregressive diffusion framework.
+        </p>
 
         <div class="demo-grid">
             <figure class="demo-card">
@@ -126,6 +131,47 @@
                 <video class="demo-video" controls preload="metadata" playsinline>
                     <source src="demo/ed6c7a7f6310401773e04f62c74e58b7.mp4" type="video/mp4">
                 </video>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- Demo Section: Zero-Shot / Cross-Identity Generation -->
+<section id="demo-zeroshot" class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Zero-Shot Cross-Identity Generation</h2>
+        <p class="section-desc">
+            Given a text transcript, a speaker embedding extracted from an unseen reference speech,
+            and an identity image of an arbitrary subject, our model synthesizes speech in the target
+            speaker's voice together with a temporally synchronized talking-head video,
+            without any speaker- or identity-specific fine-tuning.
+        </p>
+
+        <div class="demo-grid">
+            <!-- Placeholder videos  ·  replace src with the new demo files when ready -->
+            <figure class="demo-card demo-card-empty">
+                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
+            </figure>
+            <figure class="demo-card demo-card-empty">
+                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
+            </figure>
+            <figure class="demo-card demo-card-empty">
+                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
+            </figure>
+            <figure class="demo-card demo-card-empty">
+                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
+            </figure>
+            <figure class="demo-card demo-card-empty">
+                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
+            </figure>
+            <figure class="demo-card demo-card-empty">
+                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
+            </figure>
+            <figure class="demo-card demo-card-empty">
+                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
+            </figure>
+            <figure class="demo-card demo-card-empty">
+                <div class="demo-placeholder-square"><span>Coming&nbsp;soon</span></div>
             </figure>
         </div>
     </div>
