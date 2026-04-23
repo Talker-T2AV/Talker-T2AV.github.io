@@ -337,7 +337,7 @@ a:hover {
 /*  Clone Table         */
 /* ==================== */
 .clone-table {
-    max-width: 880px;
+    max-width: 720px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -347,7 +347,7 @@ a:hover {
 .clone-head,
 .clone-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 }
 
@@ -435,13 +435,17 @@ a:hover {
 
     .clone-head,
     .clone-row {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .clone-head {
+        display: none;
     }
 
     .clone-table {
-        max-width: 520px;
-        gap: 12px;
+        max-width: 360px;
+        gap: 18px;
     }
 
     .arch-split {
